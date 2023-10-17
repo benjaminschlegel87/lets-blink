@@ -4,6 +4,9 @@
 - probe-rs installiert
 
 # Installation
+
+Dies ist keine Schritt für Schritt vollständige Anleitung! Es zeigt die groben Schritte, im Detail kann aber mehr notwendig sein. Kann aber alles mit google gelöst werden!
+
 1) Installation rustup (Tool zum Installieren/Updaten des Rust Compilers)
 https://www.rust-lang.org/learn/get-started 
 
@@ -17,10 +20,13 @@ rustup target add thumbv7em-none-eabihf
 Erlaubt das Cross compilen für dieses Target
 
 thumbv7em-none-eabihf => Triplet für den Cortex-M4 mit FPU
+
 thumbv7em => Instruction Set ("Kleines Embedded Instruction Set" von Arm)
 
 Fun Fact:
+
 Arm Instruction Set => Arm wie der Arm
+
 Thumb Instruction Set => Wie der Daumen daher kleiner als Hand
 
 none => kein hersteller
