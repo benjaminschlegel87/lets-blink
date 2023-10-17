@@ -21,10 +21,12 @@ const _GPIO_ODR_OFFSET: usize = 0x14;
 const GPIO_BSSR_OFFSET: usize = 0x18;
 #[cortex_m_rt::entry]
 fn main() -> ! {
+    let rcc_cr = RCC_BASE as *mut u32;
+    let mut reg = unsafe { *rcc_cr };
+    reg |= 1;
+    unsafe { rcc_cr.write_volatile(reg) };
     // Create non mutable Pointer to AHBENR Register
-    let ahbenr = unsafe { RCC_BASE.add(RCC_AHBENR / size_of::<usize>()) };
-    // cast to mutable pointer - casting is SAFE
-    let ahbenr = ahbenr.cast_mut();
+    let ahbenr = unsafe { RCC_BASE.add(RCC_AHBENR / size_of::<usize>()).cast_mut() };
 
     // Read Register by deref pointer
     let mut reg = unsafe { *ahbenr }; // Deref a Pointer is NOT SAFE
