@@ -1,0 +1,15 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-rs run --chip STM32F303VCTx"
+rustflags = [
+    "-C",
+    # cortex-m-rt crate has a build.rs which generates a link.x in its OUT
+    # link.x includes a memory.x file in root dir
+    # here we can define RAM and Flash
+    # link.x provides vector table
+    "link-arg=-Tlink.x",
+    #"-C", 
+    #"link-arg=memory.x"
+]
+
+[build]
+target = "thumbv7em-none-eabihf"
