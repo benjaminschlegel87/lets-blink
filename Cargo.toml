@@ -4,8 +4,25 @@ version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "minimal"
+path = "src/minimal.rs"
+
+[[bin]]
+name = "pac"
+path = "src/pac.rs"
+
+[[bin]]
+name = "hal"
+path = "src/hal.rs"
+
 
 [dependencies]
 cortex-m = "0.7.7"
-cortex-m-rt = "0.7.3"
+cortex-m-rt = { version = "0.7.3" }
+embedded-hal = "0.2.7"
+embedded-time = "0.12.1"
+nb = "1.1.0"
 panic-halt = "0.2.0"
+stm32f3 = { version = "0.15.1", features = ["stm32f303"] }
+stm32f3xx-hal = { version = "0.9.2", features = ["stm32f303xc"] }

@@ -4,6 +4,7 @@
 use core::mem::size_of;
 // gives a panic_handler with a endless loop
 use panic_halt as _;
+use stm32f3 as _;
 
 // Base addr of RCC peripheral
 const RCC_BASE: *const u32 = 0x4002_1000 as *const _; // _ => wild card works here because type is given
@@ -22,9 +23,7 @@ const GPIO_BSSR_OFFSET: usize = 0x18;
 #[cortex_m_rt::entry]
 fn main() -> ! {
     // Create non mutable Pointer to AHBENR Register
-    let ahbenr = unsafe { RCC_BASE.add(RCC_AHBENR / size_of::<usize>()) };
-    // cast to mutable pointer - casting is SAFE
-    let ahbenr = ahbenr.cast_mut();
+    let ahbenr = unsafe { RCC_BASE.add(RCC_AHBENR / size_of::<usize>()).cast_mut() };
 
     // Read Register by deref pointer
     let mut reg = unsafe { *ahbenr }; // Deref a Pointer is NOT SAFE
@@ -76,7 +75,7 @@ fn main() -> ! {
             // Write reset Bit Pin 10
             bssr.write_volatile(1 << 26);
         }
-        for _i in 0..1000000 {
+        for _i in 0..1_000_000 {
             cortex_m::asm::nop();
         }
 

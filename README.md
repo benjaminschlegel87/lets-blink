@@ -2,6 +2,7 @@
 - STM32F3 Discovery Board + Mini USB Cable
 - Rust Compiler mit "thumb7em-none-eabihf" Target installiert
 - probe-rs installiert
+- ST-Link Treiber installiert
 
 # Installation
 
@@ -44,6 +45,15 @@ Damit kann direkt auf das Board geflasht werden
 
 Nachdem alles installiert wurde kann im Root des Repos foglender Befehl ausgeführt werden:
 
-cargo run
+## Minimal Beispiel
+cargo run --bin minimal
+## Beispiel mit ein wenig mehr Abstraktion - PAC Crates
+cargo run --bin pac
+## Noch mehr Abstraktion mit HAL und embedded HAL
+cargo run --bin hal
 
-Dies sollte auf das angeschlossene Board das Beispiel Flashen und die orangene LED blinkt mit ca. 1Hz
+alle Befehle können mit dem zusatz --release als maximal optimierte Variante gebaut werden (besonders interessant für das minimal Beispiel)
+
+
+
+Alle Beispiele sollten auf dem angeschlossene Board die orangene LED mit ca. 1Hz blinken (Überraschung bei minimal ohne Release inbegriffen)
