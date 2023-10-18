@@ -6,15 +6,22 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [[bin]]
 name = "minimal"
-path = "src/minimal.rs"
+path = "src/bin/minimal.rs"
 
 [[bin]]
 name = "pac"
-path = "src/pac.rs"
+path = "src/bin/pac.rs"
 
 [[bin]]
 name = "hal"
-path = "src/hal.rs"
+path = "src/bin/hal.rs"
+
+[[bin]]
+name = "bsp"
+path = "src/bin/bsp.rs"
+[[bin]]
+name = "async"
+path = "src/bin/async.rs"
 
 
 [dependencies]
